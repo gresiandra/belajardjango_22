@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+
+{% block titles %}
+    <title>{{title}}</title>
+{% endblock titles %}
+
+
+{% block contents %}
+    <div class="container">
+        <br>
+        <h4>Words counted : {{textlength}} words</h4>
+    </div>
+
+    <div class="container">
+        <br>
+    </div>
+
+    <form method='POST'>
+        {% csrf_token %}
+        <div class="container">
+            <div class="form-group">
+                {{wordForm}}
+            </div>
+
+            <button class="btn btn-primary" type="submit">Submit</button>
+            <br>
+        </div>
+    </form>
+
+    <div class="container">
+        <br>
+        <h3>Most Frequent Words : </h3>    
+
+        {% for word, count in sorteddict %}
+            <p>{{word}} : {{count}}</p>
+        {% endfor %}
+            
+    </div>
+
+{% endblock contents %}
+    
+    
