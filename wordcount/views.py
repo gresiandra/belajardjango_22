@@ -15,6 +15,8 @@ def index(request):
 
     if request.method == 'POST':
         fulltext = request.POST['words']
+
+        # membagi semua kalimat menjadi kata perkata dan dimasukan kedalam list
         fulltextdivide = fulltext.split()
         
         for word in fulltextdivide:
@@ -25,6 +27,7 @@ def index(request):
                 # masukan dalam dictionary
                 worddict[word] = 1
         
+        # mengurutkan kata dari yang paling banyak muncul
         sorteddict = sorted(worddict.items(), key=lambda x: x[1], reverse=True)[:7]
 
     context = {
